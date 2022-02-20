@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <h1>Predicted Characters</h1>
+    <hr>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">&#35;</th>
+          <th scope="col">Characters</th>
+          <th scope="col">Prediction scores</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for r in result['prediction_list'] %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+          <b>{{ r['character'] }}</b>
+        </td>
+        <td>{{ r['prediction'] }}&#37;</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <hr>
+    <div>
+      <img src="data:image/png;base64,{{ result['image'] }}" alt="img_data" class="img-rounded" width="600" height="400">
+    </div>
+    <a href="{{ url_for('index') }}" class="btn btn-default">Back</a>
+  </div>
+
+{% endblock %}
+
+<!--{{ result.labels }}-->

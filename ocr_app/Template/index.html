@@ -1,0 +1,108 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+  <h1>OCR Prediction</h1>
+  <hr />
+  <form
+    class="form-inline"
+    action="{{ url_for('index') }}"
+    method="post"
+    enctype="multipart/form-data"
+  >
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="formControlRangeHeight">Min Height</label>
+        <input
+          type="range"
+          name="min_height"
+          class="form-control-range"
+          value="20"
+          min="20"
+          max="500"
+          oninput="num1.value = this.value"
+          id="formControlRangeHeight"
+          required
+        />
+        <output id="num1">20</output>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="formControlRangeHeight">Max Height</label>
+        <input
+          type="range"
+          name="max_height"
+          class="form-control-range"
+          min="30"
+          max="600"
+          oninput="num2.value = this.value"
+          id="formControlRangeHeight"
+          required
+        />
+        <output id="num2">150</output>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="formControlRangeWidth">Min Width</label>
+        <input
+          type="range"
+          name="min_width"
+          class="form-control-range"
+          min="20"
+          max="500"
+          oninput="num3.value = this.value"
+          id="formControlRangeWidth"
+          required
+        />
+        <output id="num3">20</output>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="formControlRangeWidth">Max Width</label>
+        <input
+          type="range"
+          name="max_width"
+          class="form-control-range"
+          min="30"
+          max="600"
+          oninput="num4.value = this.value"
+          id="formControlRangeWidth"
+          required
+        />
+        <output id="num4">150</output>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inlineFormSelect">Model Predict</label>
+        <select
+          name="model_predict"
+          class="form-control"
+          id="inlineFormSelect"
+          required
+        >
+          <option selected disabled>Choose model...</option>
+          <option value="numbers">Numbers</option>
+          <option value="characters">Characters</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="formControlFile">File</label>
+        <input
+          type="file"
+          name="file"
+          class="btn btn-default"
+          id="formControlFile"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <button type="submit" class="btn btn-primary">Predict</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
